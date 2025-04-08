@@ -107,11 +107,14 @@ img {
 /* ================== NAVBAR ============*/
 nav{
     background: transparent;
-    width: 100vw;
-    height: 5rem;
+    width: 100%;
+    height: 100px;
     position: fixed;
     top: 0;
-    z-index: 11;
+    z-index: 100;
+    display: flex;
+    justify-content: space-around;
+    line-height: 100px;
 }
 
 
@@ -131,10 +134,45 @@ nav button{
     display: none;
 }
 
+.nav-button .btn{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(247, 249, 247);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.btn:hover{
+    background: var(--color-bg);
+}
+
+#registerBtn{
+    margin-left: 15px;
+}
+
+.btn.white-btn{
+    background: var(--color-bg2);  
+} 
+
+.btn.btn.white-btn{
+    background:rgba(247, 249, 247);
+}
+
+.btn.btn.white-btn:hover{
+    background: var(--color-bg);
+}
+
 .nav__menu{
     display: flex;
     align-items: center;
     gap: 4rem;
+}
+
+.nav-menu-btn{
+    display: none;
 }
 
 .nav__menu a{
@@ -171,7 +209,7 @@ header{
 /* ========================== CATEGORIES =================*/
 .categories  {
     background: var(--color-bg1);
-    height: 90rem;
+    height: 95rem;
 }
 
 .categories h1{
@@ -210,7 +248,7 @@ header{
 }
 
 .category:hover{
-    box-shadow: 0 2rem 2rem rgba(0, 0, 0,0.3);
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0,0.3);
     z-index: 1;
 }
 
@@ -269,7 +307,7 @@ header{
 
 /* ================ POPULAR Departments =============*/
 .department{
-    margin-top: 5rem;
+    margin-top: 0rem;
 }
 
 .department__container{
@@ -300,10 +338,23 @@ header{
     font-size: 0.9rem;
 }
 
+.department__image {
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+}
+
+.department__image img {
+    width: 400px; 
+    height: 200px; 
+    object-fit: cover;
+}
+
 /*================ FAQs==============*/
 .faqs{
     background: var(--color-bg1);
-    box-shadow: inset 0 0 1.5rem rgba(0, 0, 0, 0.5); 
+    box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.5); 
 }
 
 .faqs__container{

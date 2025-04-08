@@ -37,83 +37,55 @@ header {
     display: block;
 }
 
-/* ========================= COURSES ========================= */
-.courses {
-    margin-top: 5rem;
-    background: var(--color-bg1); /* Set background color */
-    padding: 2rem 0; /* Add padding for spacing */
+/* ========================== PATH =================*/
+.paths  {
+    background: var(--color-bg1);
+    height: 40rem;
 }
 
-.courses__container {
+.paths h1{
+    line-height: 1;
+    margin-bottom: 3rem;
+}
+
+.paths__container{
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 2rem;
+    grid-template-columns: 40% 60%;
 }
 
-.course {
+.paths__left{
+    margin-right: 4rem;
+}
+
+.paths__left p{
+    margin: 1rem 0 3 rem;
+}
+
+.paths__right{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+.path{
+    background: var(--color-bg2);
     padding: 2rem;
-    background: var(--color-bg2); /* Background color */
-    text-align: center;
-    border: 1px solid transparent;
+    border-radius: 2rem;
     transition: var(--transition);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%; /* Ensures content fills available space */
-    /*box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better visuals */
 }
 
-/* Equalize height for course articles */
-.courses article {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+.path:hover{
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0,0.3);
+    z-index: 1;
 }
 
-.courses article .course h4 {
-    margin-bottom: 1rem;
+.path h5{
+    margin: 2rem 0 1rem;
 }
 
-.courses article .course ul {
-    margin: 0;
-    padding: 0;
-    list-style: none; /* Remove bullets */
-    text-align: left;
+.path p{
+    font-size: 0.85rem;
 }
-
-.course:hover {
-    background: transparent;
-    border-color: var(--color-primary);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Highlight on hover */
-}
-
-/* Ensure equal width and height for semester parts */
-.courses article .course {
-    width: 100%;
-    height: 100%;
-    min-height: 100px; /* Minimum height to ensure uniformity */
-    box-sizing: border-box;
-}
-
-.courses h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--color-primary); /* Adjust to your theme */
-}
-
-.courses h3 {
-    text-align: center;
-    margin-top: 2rem;
-    color: var(--color-secondary); /* Adjust to your theme */
-}
-
-.course p {
-    margin: 1.2rem 0 2rem;
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
 /* ========================== LAB ==============*/
 .lab {
     position: relative;
@@ -151,6 +123,88 @@ header {
     width: 100%;
     height: auto;
     display: block;
+}
+
+/* ================ POPULAR TREND =============*/
+.trend{
+    margin-top: 5rem;
+}
+
+.trend__container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.trend{
+    background: var(--color-bg1);
+    text-align: center; 
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.trend:hover{
+    background: var(--color-bg1);
+    border-color: var(--color-primary);
+}
+
+.trend__info{
+    padding: 2rem;
+    background: var(--color-bg);
+}
+
+.trend__info p{
+    margin: 1.2rem 0 2rem;
+    font-size: 0.9rem;
+}
+
+.trend__image {
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+}
+
+.trend__image img {
+    width: 400px; 
+    height: 200px; 
+    object-fit: cover;
+}
+
+
+/* ========================= TOOLS ===================*/
+.tool {
+    background: var(--color-bg);
+    box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.tool__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 2rem; 
+}
+
+.tool__member {
+    background: var(--color-bg1);
+    padding: 2rem;
+    border: 1px solid transparent;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.tool__member:hover {
+    background: transparent;
+    border-color: var(--color-primary);
+}
+
+.tool__member-info * {
+    text-align: center;
+    margin-top: 1.4rem;
+}
+
+.tool__member-info p {
+    color: var(--color-light);
 }
 
 /* Responsive Media Queries */
