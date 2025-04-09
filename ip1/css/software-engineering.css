@@ -1,0 +1,253 @@
+/* ========================== HEADER ==============*/
+header {
+    position: relative;
+    top: 5rem;
+    overflow: hidden;
+    height: 70vh;
+    margin-bottom: 5rem;
+}
+
+.header__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+    height: 100%;
+}
+
+.header__left p {
+    margin: 1rem 0 2.4rem;
+}
+
+.header__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__right-image {
+    width: 100%;
+    max-width: 400px; /* Adjust based on your layout */
+    height: auto;
+}
+
+.header__right-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ========================== PATH =================*/
+.paths  {
+    background: var(--color-bg1);
+    height: 40rem;
+}
+
+.paths h1{
+    line-height: 1;
+    margin-bottom: 3rem;
+}
+
+.paths__container{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.paths__left{
+    margin-right: 4rem;
+}
+
+.paths__left p{
+    margin: 1rem 0 3 rem;
+}
+
+.paths__right{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+.path{
+    background: var(--color-bg2);
+    padding: 2rem;
+    border-radius: 2rem;
+    transition: var(--transition);
+}
+
+.path:hover{
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0,0.3);
+    z-index: 1;
+}
+
+.path h5{
+    margin: 2rem 0 1rem;
+}
+
+.path p{
+    font-size: 0.85rem;
+}
+/* ========================== LAB ==============*/
+.lab {
+    position: relative;
+    top: 5rem;
+    overflow: hidden;
+    height: 70vh;
+    margin-bottom: 5rem;
+}
+
+.lab__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+    height: 100%;
+}
+
+.lab__right p {
+    margin: 1rem 0 2.4rem;
+}
+
+.lab__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lab__left-image {
+    width: 100%;
+    max-width: 400px; /* Adjust based on your layout */
+    height: auto;
+}
+
+.lab__left-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ================ POPULAR TREND =============*/
+.trend{
+    margin-top: 5rem;
+}
+
+.trend__container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.trend{
+    background: var(--color-bg1);
+    text-align: center; 
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.trend:hover{
+    background: var(--color-bg1);
+    border-color: var(--color-primary);
+}
+
+.trend__info{
+    padding: 2rem;
+    background: var(--color-bg);
+}
+
+.trend__info p{
+    margin: 1.2rem 0 2rem;
+    font-size: 0.9rem;
+}
+
+.trend__image {
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+}
+
+.trend__image img {
+    width: 400px; 
+    height: 200px; 
+    object-fit: cover;
+}
+
+
+/* ========================= TOOLS ===================*/
+.tool {
+    background: var(--color-bg);
+    box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.tool__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 2rem; 
+}
+
+.tool__member {
+    background: var(--color-bg1);
+    padding: 2rem;
+    border: 1px solid transparent;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.tool__member:hover {
+    background: transparent;
+    border-color: var(--color-primary);
+}
+
+.tool__member-info * {
+    text-align: center;
+    margin-top: 1.4rem;
+}
+
+.tool__member-info p {
+    color: var(--color-light);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    .container {
+        width: var(--container-md);
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn {
+        padding: 0.7rem 1.2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .categories__container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: var(--container-sm);
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    .nav__menu {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
