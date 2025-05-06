@@ -5,9 +5,6 @@ window.addEventListener('scroll', () => {
 });
 
 
-
-
-
 // show/hide faq answer
 
 const faqs = document.querySelectorAll('.faq');
