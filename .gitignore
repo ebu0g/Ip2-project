@@ -1,9 +1,10 @@
 .env
 .vscode/
-backend/
+backend/.env
+
 config.php
 dsdsa/
-frontend/
+
 node_modules/
 package-lock.json
 package.json
