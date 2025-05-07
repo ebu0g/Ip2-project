@@ -10,3 +10,4 @@ package-lock.json
 package.json
 project.session.sql
 backend/api/*
+backend/vendor/
