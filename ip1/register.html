@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In / Sign Up</title>
+
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+
+  
+  <link rel="stylesheet" href="./css/register.css" />
+</head>
+<body>
+
+  <!-- SIGN UP FORM -->
+  <div class="container" id="signUp" style="display: none;">
+    <h1 class="form-title">Register</h1>
+    <form method="post" action="">
+      <div class="input-group">
+        <i class="uil uil-user"></i>
+        <input type="text" name="fName" id="fName" placeholder="First Name" required />
+        <label for="fName">First Name</label>
+      </div>
+      <div class="input-group">
+        <i class="uil uil-user"></i>
+        <input type="text" name="lName" id="lName" placeholder="Last Name" required />
+        <label for="lName">Last Name</label>
+      </div>
+      <div class="input-group">
+        <i class="uil uil-envelope"></i>
+        <input type="email" name="email" id="signUpEmail" placeholder="Email" required />
+        <label for="email">Email</label>
+      </div>
+      <div class="input-group">
+        <i class="uil uil-lock"></i>
+        <input type="password" name="password" id="signUpPassword" placeholder="Password" required />
+        <label for="password">Password</label>
+      </div>
+      <input type="submit" class="btn" value="Sign Up" name="signup" />
+    </form>
+    <p class="or">----------or----------</p>
+    <div class="icons">
+      <i class="uil uil-google"></i>
+      <i class="uil uil-facebook"></i>
+    </div>
+    <div class="links">
+      <p>Already Have Account?</p>
+      <button id="signInButton">Sign In</button>
+    </div>
+  </div>
+
+  <!-- SIGN IN FORM -->
+  <div class="container" id="signIn">
+    <h1 class="form-title">Sign In</h1>
+    <form method="post" action="">
+      <div class="input-group">
+        <i class="uil uil-envelope"></i>
+        <input type="email" name="email" id="signInEmail" placeholder="Email" required />
+        <label for="email">Email</label>
+      </div>
+      <div class="input-group">
+        <i class="uil uil-lock"></i>
+        <input type="password" name="password" id="signInPassword" placeholder="Password" required />
+        <label for="password">Password</label>
+      </div>
+      <p class="recover"><a href="#">Recover Password</a></p>
+      <input type="submit" class="btn" value="Sign In" name="signIN" />
+    </form>
+    <p class="or">----------or----------</p>
+    <div class="icons">
+      <i class="uil uil-google"></i>
+      <i class="uil uil-facebook"></i>
+    </div>
+    <div class="links">
+      <p>Don't have an account yet?</p>
+      <button id="signUpButton">Sign Up</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
