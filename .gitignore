@@ -9,7 +9,7 @@ node_modules/
 package-lock.json
 package.json
 project.session.sql
-backend/api/*
+
 backend/vendor/
 backend/frontend
 backend/.env
