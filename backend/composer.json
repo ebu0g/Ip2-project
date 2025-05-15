@@ -1,0 +1,14 @@
+{
+    "name": "hp/backend",
+    "description": "internet programming course project",
+    "authors": [
+        {
+            "name": "henok dagne",
+            "email": "henokdagne19@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "google/apiclient": "2.0"
+    }
+}

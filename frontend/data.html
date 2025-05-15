@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Prospects</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional: Add your CSS file -->
+</head>
+<body>
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <!-- Content will be dynamically rendered here -->
+        </div>
+    </section>
+
+    <script>
+        const apiUrl = "http://localhost:8000/backend/controllers/question.php";
+
+        // Fetch data from the API
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch data");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const faqContainer = document.querySelector('.faq-container');
+
+                // Check if data is an array
+                if (Array.isArray(data) && data.length > 0) {
+                    data.forEach(question => {
+                        // Create the article element for each question
+                        const article = document.createElement('article');
+                        article.classList.add('faq');
+
+                        // Add the question text (always visible)
+                        const questionHeader = document.createElement('div');
+                        questionHeader.classList.add('faq-header');
+
+                        const questionTitle = document.createElement('h3');
+                        questionTitle.textContent = question.question_text;
+                        questionHeader.appendChild(questionTitle);
+
+                        // Add the FAQ icon
+                        const faqIcon = document.createElement('div');
+                        faqIcon.classList.add('faq__icon');
+                        faqIcon.innerHTML = '<i class="uil uil-plus"></i>';
+                        questionHeader.appendChild(faqIcon);
+
+                        article.appendChild(questionHeader);
+
+                        // Add the answers container
+                        const answersContainer = document.createElement('div');
+                        answersContainer.classList.add('answers__container');
+                        answersContainer.style.display = 'none'; // Initially hidden
+
+                        // Add the answers
+                        if (question.answers && question.answers.length > 0) {
+                            question.answers.forEach(answer => {
+                                const answerItem = document.createElement('p');
+                                answerItem.innerHTML = `<b>${answer.department_name}</b>: ${answer.answer}`;
+                                answersContainer.appendChild(answerItem);
+                            });
+                        } else {
+                            answersContainer.innerHTML = '<p>No answers available for this question.</p>';
+                        }
+
+                        article.appendChild(answersContainer);
+                        faqContainer.appendChild(article);
+
+                        // Add toggle functionality for the FAQ icon
+                        questionHeader.addEventListener('click', () => {
+                            if (answersContainer.style.display === 'none') {
+                                answersContainer.style.display = 'block';
+                                faqIcon.innerHTML = '<i class="uil uil-minus"></i>'; // Change icon to minus
+                            } else {
+                                answersContainer.style.display = 'none';
+                                faqIcon.innerHTML = '<i class="uil uil-plus"></i>'; // Change icon to plus
+                            }
+                        });
+                    });
+                } else {
+                    faqContainer.innerHTML = '<p>No FAQs available at the moment.</p>';
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+                const faqContainer = document.querySelector('.faq-container');
+                faqContainer.innerHTML = '<p>Failed to load FAQs. Please try again later.</p>';
+            });
+    </script>
+</body>
+</html>
