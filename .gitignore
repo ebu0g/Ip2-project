@@ -9,12 +9,12 @@ node_modules/
 package-lock.json
 package.json
 project.session.sql
-backend/api/*
+
 backend/vendor/
 backend/frontend
 backend/.env
 backend/frontend
 backend/README.md
 *.log
-backend/api/
+
 vendor/
