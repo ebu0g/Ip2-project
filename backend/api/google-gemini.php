@@ -2,7 +2,7 @@
 session_start(); // Start the session to store chat history
 
 // --- CONFIGURATION ---
-
+// $apikey = ""; // Your OpenRouter API key
 $chatModel = 'google/gemini-2.0-flash-exp:free';
 $imageGenerationModel = 'playgroundai/playground-v2.5';
 $imageCommand = '/image'; // Command to trigger image generation
@@ -89,3 +89,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($apiPayload)) {
         $assistantResponse = callOpenRouterAPI($apiKey, $modelToUse, $apiPayload, $requestType);
+
+        if ($assistantResponse !== null) {
+            if ($requestType === 'image') {
+                $_SESSION['chat_history'][] = ['role' => 'assistant', 'content' => $assistantResponse, 'type' => 'image_urls'];
+                echo json_encode(['type' => 'image', 'content' => $assistantResponse]);
+            } else {
+                $_SESSION['chat_history'][] = ['role' => 'assistant', 'content' => $assistantResponse, 'type' => 'text'];
+                echo json_encode(['type' => 'text', 'content' => $assistantResponse]);
+            }
+        } else {
+            echo json_encode(['error' => "Sorry, I couldn't process that request."]);
+        }
+    }
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $input = json_decode(file_get_contents('php://input'), true);
+
+    // Handle clear history action
+    if (isset($input['action']) && $input['action'] === 'clear_history') {
+        $_SESSION['chat_history'] = [];
+        echo json_encode(['success' => true]);
+        exit;
+    }
+
+    $userMessage = trim($_POST['user_message'] ?? '');
+    $uploadedFile = $_FILES['file'] ?? null;
+
+    // Existing logic for handling messages and file uploads...
+}
+    exit;
+}

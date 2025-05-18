@@ -1,0 +1,44 @@
+body {
+      background-color: #0d1117;
+    }
+    .sidebar {
+      background: linear-gradient(180deg, #1f2937, #111827);
+    }
+    .navbar {
+      background: linear-gradient(90deg, #3b82f6, #1e40af);
+    }
+    .card {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+    }
+    .btn-primary {
+      background-color: #2563eb;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+    }
+    .btn-secondary {
+      background-color: #facc15;
+      color: black;
+    }
+    .btn-secondary:hover {
+      background-color: #eab308;
+    }
+    .table-box {
+      width: 200px;
+      height: 30px;
+      background-color: #1d4ed8;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .table-box:hover {
+      background-color: blur(0.5px);
+      cursor: pointer;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px 3px gold;
+    }

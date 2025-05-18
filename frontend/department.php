@@ -1,3 +1,13 @@
+<?php
+
+require_once 'authorizationclass.php';
+
+Authorization::isLogin();
+Authorization::hasPermission('access_department');
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +35,10 @@
         <div class="container nav_container">
             <a href="index.html"><h4>DEPARTMENT NETWORK</h4></a>
             <ul class="nav__menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="department.html">Department</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="department.php">Department</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </div>
     </nav>

@@ -8,13 +8,12 @@ class User {
         $database = new Database();
         $this->conn = $database->connect();
     }
-
-    public function createUser($first_name, $middle_name, $last_name, $username, $email, $role, $password) {
+    public function createUser($first_name, $middle_name, $last_name, $username, $email, $role, $password, $profile_image) {
         try {
             // Prepare the SQL query
             $stmt = $this->conn->prepare(
-                "INSERT INTO users (first_name, middle_name, last_name, username, email, role, password) 
-                 VALUES (:first_name, :middle_name, :last_name, :username, :email, :role, :password)"
+                "INSERT INTO users (first_name, middle_name, last_name, username, email, role, password, profile_image) 
+                VALUES (:first_name, :middle_name, :last_name, :username, :email, :role, :password, :profile_image)"
             );
 
             // Bind parameters
@@ -25,20 +24,22 @@ class User {
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':role', $role);
             $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':profile_image', $profile_image);
 
             // Execute the query
             if ($stmt->execute()) {
                 return true;
             } else {
-                error_log("Error: " . implode(", ", $stmt->errorInfo()));
+                // Log SQL errors
+                error_log("SQL Error: " . implode(", ", $stmt->errorInfo()));
                 return false;
             }
         } catch (PDOException $e) {
-            error_log("Error: " . $e->getMessage());
+            // Log exception message
+            error_log("PDOException: " . $e->getMessage());
             return false;
         }
     }
-
     public function loginUser($email, $password) {
         try {
             // Prepare the SQL query

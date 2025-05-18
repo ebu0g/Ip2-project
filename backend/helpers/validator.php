@@ -60,7 +60,7 @@ class Validator {
         }
 
         // Check if email already exists
-        if ($this->authMiddlewareDatabase->checkUserEmailiExists($email)) {
+        if ($this->authMiddlewareDatabase->checkUserEmailExists($email)) {
             $this->errors[] = "{$email} email already exists.";
         }
              // Check if username already exists

@@ -16,21 +16,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email'] ?? '');
     $role = trim($_POST['role'] ?? '');
     $password = $_POST['password'] ?? '';
-
     $profileImage = '';
 
     // Handle file upload
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $uploadDir = '../uploads/';
+        $uploadDir = __DIR__ . '/../uploads/'; // Use absolute path to avoid issues
+
         if (!file_exists($uploadDir)) {
             mkdir($uploadDir, 0777, true); // Create the directory with full permissions
         }
 
-        $profileImage = $uploadDir . basename($_FILES['image']['name']);
+        $uniqueFileName = uniqid() . '_' . basename($_FILES['image']['name']);
+        $profileImage = $uploadDir . $uniqueFileName;
+
         if (!move_uploaded_file($_FILES['image']['tmp_name'], $profileImage)) {
             echo json_encode(["error" => "Failed to upload image"]);
             exit;
         }
+
+        // Store the relative path to the uploaded image
+        $profileImage = 'uploads/' . $uniqueFileName;
     }
 
     // Validate input
@@ -50,16 +55,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Create user
-    $userModel = new User();
-    $result = $userModel->createUser($first_name, $middlename, $last_name, $username, $email, $role, password_hash($password, PASSWORD_BCRYPT));
+    
 
-    if ($result) {
-        echo json_encode(["success" => "User registered successfully"]);
-    } else {
-        echo json_encode(["error" => "Failed to register user. Please try again."]);
-    }
+// Create user
+$userModel = new User();
+$result = $userModel->createUser(
+    $first_name,
+    $middlename,
+    $last_name,
+    $username,
+    $email,
+    $role,
+    password_hash($password, PASSWORD_BCRYPT),
+    $profileImage // Pass the profile image URL
+);
+
+if ($result) {
+    echo json_encode(["success" => "User registered successfully"]);
 } else {
-    echo json_encode(["error" => "Invalid request method."]);
+    echo $result;
+}
 }
 ?>

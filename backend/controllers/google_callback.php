@@ -59,7 +59,7 @@ if (isset($_GET['code'])) {
          
 
         // Redirect to the frontend or dashboard
-        header('Location: http://localhost:8000/frontend/index.html');
+        header('Location: http://localhost:8000/frontend/index.php');
         exit();
     } catch (Exception $e) {
         // Log the error and display a user-friendly message

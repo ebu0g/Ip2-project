@@ -50,20 +50,18 @@ class loginroutes{
             // Fetch the result
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
         
-            if ($user) {
-                // Set session variables
-                $_SESSION['username'] = $user['username'];
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['role'] = $user['role'];
-            }
-        
+        if ($user) {
+            // Set session variables
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['role'] = $user['role'];
+            
             // Check if session was created
-            if (isset($_SESSION['email'])) {
-                echo json_encode(["success" => "User logged in successfully"]);
-                echo json_encode($_SESSION);
-            } else {
-                echo json_encode(["error" => "Failed to create session."]);
-            }
+            header("location: http://localhost:8000/frontend/index.php");
+        } else {
+            // Redirect back to the login page with an error
+            header("Location: http://localhost:8000/frontend/login.php?error=Invalid credentials");
+        }
         } catch (PDOException $e) {
             // Log the error and return false
             error_log("Error: " . $e->getMessage());

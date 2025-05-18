@@ -6,19 +6,14 @@ fetch(apiUrl)
             throw new Error("Failed to fetch data");
         }
         return response.json();
-    })
-    .then(data => {
+        })
+        .then(data => {
         const faqContainer = document.querySelector('.faqs__container');
 
         data.forEach(question => {
             // Create the article element for each question
             const article = document.createElement('article');
             article.classList.add('faq');
-
-            // Add the question text (always visible)
-            const questionTitle = document.createElement('h4');
-            questionTitle.textContent = question.question_text;
-            article.appendChild(questionTitle);
 
             // Add the FAQ icon
             const faqIcon = document.createElement('div');
@@ -28,21 +23,25 @@ fetch(apiUrl)
 
             // Add the answers container
             const answersContainer = document.createElement('div');
-            answersContainer.classList.add('answers__container');
+            answersContainer.classList.add('question__answer');
+
+            // Add the question text
+            const questionTitle = document.createElement('h4');
+            questionTitle.textContent = question.question_text;
+            answersContainer.appendChild(questionTitle);
 
             // Add the answers
+            const answerParagraph = document.createElement('p');
             if (question.answers && question.answers.length > 0) {
-                question.answers.forEach(answer => {
-                    const answerItem = document.createElement('p');
-                    answerItem.innerHTML = `<b>${answer.department_name}</b>: ${answer.answer}`;
-                    answersContainer.appendChild(answerItem);
-                });
+            question.answers.forEach(answer => {
+                answerParagraph.innerHTML += `<b>${answer.department_name}</b>: ${answer.answer}<br>`;
+            });
             } else {
-                answersContainer.innerHTML = '<p>No answers available for this question.</p>';
+            answerParagraph.innerHTML = 'No answers available for this question.';
             }
+            answersContainer.appendChild(answerParagraph);
 
             // Initially hide the answers
-            answersContainer.style.display = 'none';
 
             // Append the answers container to the article
             article.appendChild(answersContainer);
@@ -52,13 +51,13 @@ fetch(apiUrl)
 
             // Add toggle functionality for the FAQ icon
             faqIcon.addEventListener('click', () => {
-                if (answersContainer.style.display === 'none') {
-                    answersContainer.style.display = 'block';
-                    faqIcon.innerHTML = '<i class="uil uil-minus"></i>'; // Change icon to minus
-                } else {
-                    answersContainer.style.display = 'none';
-                    faqIcon.innerHTML = '<i class="uil uil-plus"></i>'; // Change icon to plus
-                }
+            if (answerParagraph.style.display === 'none') {
+                answerParagraph.style.display = 'block';
+                faqIcon.innerHTML = '<i class="uil uil-minus"></i>'; // Change icon to minus
+            } else {
+                answerParagraph.style.display = 'none';
+                faqIcon.innerHTML = '<i class="uil uil-plus"></i>'; // Change icon to plus
+            }
             });
         });
     })

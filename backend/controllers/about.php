@@ -14,11 +14,11 @@ class AboutController {
             if(!ob_get_level()){
                 ob_start();
             }
-            $numberofDepartments = $this->listData->countDepartments();
+            $numberofDepartments['number'] = $this->listData->countDepartments();
             if(empty($numberofDepartments)){
                 $this->serializer->SendNumberResponse(404, ['error'=> 'No departments number found']);
             }
-            $this->serializer->SendNumberResponse(200, $numberofDepartments);
+            $this->serializer->SendNumberResponse(200, $numberofDepartments['number']);
         } catch (Exception$e) {
             $this->serializer->SendNumberResponse(500, ['error' => $e->getMessage()]);
         }

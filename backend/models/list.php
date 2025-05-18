@@ -64,7 +64,7 @@ class ListData {
             $stmt = $this->conn->prepare("SELECT COUNT(*) as department_number FROM departments");
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            echo json_encode($result['department_number']); 
+            
             return $result['department_number'];
 
         } catch (PDOException $e) {
@@ -73,6 +73,8 @@ class ListData {
     }
 
 }
+
+
 
 
 
