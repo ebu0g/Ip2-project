@@ -16,5 +16,6 @@ backend/.env
 backend/frontend
 backend/README.md
 *.log
-
+frontend/image
 vendor/
+.env
