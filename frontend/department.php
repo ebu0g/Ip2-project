@@ -1,7 +1,6 @@
 <?php
-
-require_once 'authorizationclass.php';
-
+session_start();
+require_once 'Authorization.php';
 Authorization::isLogin();
 Authorization::hasPermission('access_department');
 ?>

@@ -34,7 +34,6 @@ $client->addScope('profile');
 
 // Generate Google Login URL
 $loginUrl = $client->createAuthUrl();
-echo "Login URL: " . htmlspecialchars($loginUrl); // Debugging line to check the login URL
 
 ?>
 

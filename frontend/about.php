@@ -1,7 +1,7 @@
 
 
 <?php
-require_once 'authorizationclass.php';
+require_once 'Authorization.php';
 
 Authorization::isLogin();
 Authorization::hasPermission('access_about')

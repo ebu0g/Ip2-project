@@ -1,3 +1,10 @@
+<?php 
+require_once 'Authorization.php';
+
+Authorization::isLogin();
+Authorization::hasPermission('access_admin_panel');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

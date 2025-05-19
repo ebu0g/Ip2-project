@@ -46,14 +46,14 @@ if (isset($_GET['code'])) {
         $userInfo = $googleService->userinfo->get();
 
         // Store user information in session or database
-        $_SESSION['email'] = $userInfo->email;
-        $_SESSION['name'] = $userInfo->name;
-        $_SESSION['picture'] = $userInfo->picture;
-        $_SESSION['first_name'] = $userInfo->givenName;
-        $_SESSION['last_name'] = $userInfo->familyName;
-        $_SESSION['middle_name'] = null; // Assuming middle name is not provided by Google
-        $_SESSION['username'] = $userInfo->username;
-        $_SESSION['role'] = 'user';
+        $_SESSION['user']['email'] = $userInfo->email;
+        $_SESSION['user']['name'] = $userInfo->name;
+        $_SESSION['user']['picture'] = $userInfo->picture;
+        $_SESSION['user']['first_name'] = $userInfo->givenName;
+        $_SESSION['user']['last_name'] = $userInfo->familyName;
+        $_SESSION['user']['middle_name'] = null; // Assuming middle name is not provided by Google
+        $_SESSION['user']['username'] = $userInfo->username;
+        $_SESSION['user']['role'] = 'user';
     
         
          

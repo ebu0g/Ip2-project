@@ -1,3 +1,8 @@
+<?php 
+require_once 'Authorization.php';
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,25 +30,30 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-     <nav>
+
+
+     
+    <nav>
         <div class="container nav_container">
             <a href="index.html"><h4>DEPARTMENT NETWORK</h4></a>
-            <u1 class="nav__menu">
-               <li><a href="index.html">Home</a></li>
-               <li><a href="about.php">About</a></li>  
-               <li><a href="department.php">Department</a></li>  
-               <li><a href="contact.php">Contact</a></li>  
-               <li><a href="dashbord.php">Dashboard</a></li>  
-               <li><a href="http://localhost:8000/frontend/login.php">login</a></li>
-               <li><a href="http://localhost:8000/frontend/signup.php">signup</a></li>
-               <li><a href="http://localhost:8000/backend/controllers/logout.php">logout</a></li>
-             
-            </u1>
+            <ul class="nav__menu">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About</a></li>  
+                <li><a href="department.php">Department</a></li>  
+                <li><a href="contact.php">Contact</a></li>  
+                <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'admin'): ?>
+                    <li><a href="dashbord.php">Dashboard</a></li>
+                <?php elseif (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'user'): ?>
+                    <li><a href="userdashbord.php">Dashbord</a></li>
+                <?php endif; ?>
+                <li><a href="http://localhost:8000/frontend/login.php">login</a></li>
+                <li><a href="http://localhost:8000/frontend/signup.php">signup</a></li>
+                <li><a href="http://localhost:8000/backend/controllers/logout.php">logout</a></li>
+            </ul>
             <button id="open-menu-btn"><i class="uil uil-bars"></i></button>
             <button id="close-menu-btn"><i class="uil uil-multiply"></i></button>
         </div>
-     </nav>
-     <!--=================== END OF NAVBAR====================-->
+    </nav>
     
      
 
@@ -211,10 +221,10 @@
                 <div class="footer__2">
                   <h4>permalinks</h4>
                   <u1 class="permalink">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="department.html">Department</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="department.php">Department</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                   </u1>
                 </div>
 

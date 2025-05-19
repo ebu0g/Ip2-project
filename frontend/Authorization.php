@@ -1,8 +1,14 @@
+
+
 <?php
+
 class Authorization
+
 {
+   
     // Define roles and their permissions
     private static $permissions = [
+        
         'admin' => [
             'access_about',
             'access_department',
@@ -10,6 +16,9 @@ class Authorization
             'access_contact',
             'access_report',
             'access_dashboard',
+           
+            'acccess_admin_panel',
+            
 
         ],
         'user' => [
@@ -19,49 +28,47 @@ class Authorization
             'access_contact',
             'access_userdashboard',
             'access_report',
+             
+            'access_chatbot',
             
             
             
         ],
        
     ];
-
-    // Start the session if not already started
-    public static function startSession() {
+     // Add this method to handle session start
+    private static function startSession() {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
     }
 
-    // Check if the user is logged in
+    // ...rest of your class.
+
     public static function isLogin() {
         self::startSession();
 
-        if (!isset($_SESSION['email'])) {
+        if (!isset($_SESSION['user']['email'])) {
             header("Location: http://localhost:8000/frontend/login.php");
             exit();
         }
     }
 
-    // Check if the user has the required permission
     public static function hasPermission($permission) {
         self::startSession();
 
-        // Check if the user's role is set
-        if (!isset($_SESSION['role'])) {
+        if (!isset($_SESSION['user']['role'])) {
             header("Location: http://localhost:8000/frontend/login.php");
             exit();
         }
 
-        $role = $_SESSION['role'];
+        $role = $_SESSION['user']['role'];
 
-        // Check if the role exists in the permissions array
         if (!isset(self::$permissions[$role])) {
             header("Location: http://localhost:8000/frontend/unauthorized.html?message=" . urlencode("Role not found"));
             exit();
         }
 
-        // Check if the permission exists for the role
         if (!in_array($permission, self::$permissions[$role])) {
             header("Location: http://localhost:8000/frontend/unauthorized.html?message=" . urlencode("Permission denied"));
             exit();

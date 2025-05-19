@@ -1,5 +1,5 @@
 <?php 
-require_once 'authorizationclass.php';
+require_once 'Authorization.php';
 
 Authorization::isLogin();
 Authorization::hasPermission('access_contact');
@@ -38,7 +38,7 @@ Authorization::hasPermission('access_contact');
         <div class="container nav_container">
             <a href="index.html"><h4>DEPARTMENT NETWORK</h4></a>
             <u1 class="nav__menu">
-               <li><a href="index.html">Home</a></li>
+               <li><a href="index.php">Home</a></li>
                <li><a href="about.php">About</a></li>  
                <li><a href="department.php">Department</a></li>  
                <li><a href="contact.php">Contact</a></li> 

@@ -1,5 +1,5 @@
 <?php
-require_once 'authorizationclass.php';
+require_once 'Authorization.php';
 Authorization::islogin();
 Authorization::hasPermission('access_report');
 ?>

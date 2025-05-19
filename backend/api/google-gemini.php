@@ -2,7 +2,7 @@
 session_start(); // Start the session to store chat history
 
 // --- CONFIGURATION ---
-// $apikey = ""; // Your OpenRouter API key
+
 $chatModel = 'google/gemini-2.0-flash-exp:free';
 $imageGenerationModel = 'playgroundai/playground-v2.5';
 $imageCommand = '/image'; // Command to trigger image generation

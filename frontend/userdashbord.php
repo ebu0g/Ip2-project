@@ -1,6 +1,6 @@
 <?php 
 
-require_once 'authorizationclass.php';
+require_once 'Authorization99520.php';
 
 Authorization::isLogin();
 Authorization::hasPermission('access_userdashboard');
@@ -21,17 +21,41 @@ Authorization::hasPermission('access_userdashboard');
   <!-- Navbar -->
   <header class="navbar flex items-center justify-between px-6 py-4 shadow">
     <div class="flex items-center space-x-4">
-      <img src="https://placehold.co/50x50" alt="Profile Picture" class="rounded-full">
+        <img 
+          src="<?php
+            echo (isset($_SESSION['user']['profile_picture']) && $_SESSION['user']['profile_picture'] !== '')
+              ? '../backend/' . htmlspecialchars($_SESSION['user']['profile_picture'])
+              : 'https://placehold.co/50x50';
+          ?>" 
+          alt="Profile Picture" 
+          class="rounded-full w-12 h-12 object-cover border-2 border-white shadow"
+        >
+
       <div>
-        <h3 class="text-lg font-bold">John Doe</h3>
-        <p class="text-sm text-gray-200">johndoe@example.com</p>
+        <h3 class="text-lg font-bold">
+          <?php echo isset($_SESSION['user']['name']) && $_SESSION['user']['name'] !== '' 
+              ? htmlspecialchars($_SESSION['user']['name']) 
+              : 'Unknown User'; ?>
+        </h3>
+        <p class="text-sm text-gray-200">
+          <?php echo isset($_SESSION['user']['email']) && $_SESSION['user']['email'] !== '' 
+              ? htmlspecialchars($_SESSION['user']['email']) 
+              : 'No email found'; ?>
+        </p>
       </div>
     </div>
     <nav class="flex space-x-4">
+       <a href="index.php" class="btn-primary px-4 py-2 rounded">Home</a>
       <a href="#" class="btn-primary px-4 py-2 rounded">Dashboard</a>
-      <a href="#" class="btn-primary px-4 py-2 rounded">Recommendations</a>
-      <a href="#" class="btn-primary px-4 py-2 rounded">Departments</a>
-      <a href="http://localhost:8000/frontend/report.html" class="btn-primary px-4 py-2 rounded">Reports</a>
+       <a href="chatbot.php" class="btn-primary flex items-center gap-2 px-4 py-2 rounded bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-700 hover:to-blue-800 transition text-white shadow">
+        <!-- Chatbot Icon (Heroicons or SVG) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2H7l-4 4V6a2 2 0 012-2h12a2 2 0 012 2v2z" />
+        </svg>
+        <span>Chatbot</span>
+      </a>
+      <a href="department.php" class="btn-primary px-4 py-2 rounded">Departments</a>
+      <a href="http://localhost:8000/frontend/report.php" class="btn-primary px-4 py-2 rounded">Reports</a>
     </nav>
   </header>
 
@@ -40,7 +64,7 @@ Authorization::hasPermission('access_userdashboard');
     <aside class="sidebar w-64 h-screen p-6">
       <h2 class="text-2xl font-bold mb-6">Navigation</h2>
       <nav class="space-y-4">
-        <a href="#" class="block btn-primary px-4 py-2 rounded">Settings</a>
+      
         <!-- Database Link -->
         
         <!-- Container for displaying database table names -->
