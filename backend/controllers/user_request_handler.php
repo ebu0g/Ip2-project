@@ -71,7 +71,7 @@ $result = $userModel->createUser(
 );
 
 if ($result) {
-    echo json_encode(["success" => "User registered successfully"]);
+    header("Location: http://localhost:8000/frontend/index.php");
 } else {
     echo $result;
 }
