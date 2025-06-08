@@ -2,7 +2,7 @@
 
 A web-based Department System for managing users, teams, reports, and AI-powered chatbots. Built with PHP (backend), HTML/CSS/JS (frontend), and integrated with AI APIs for enhanced user experience.
 
-![Project Logo](frontend/image/Screenshot%202025-06-08%20190443.png)
+![Project Logo](frontend/image/page.png)
 
 ---
 
